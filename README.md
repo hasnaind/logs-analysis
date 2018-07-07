@@ -16,7 +16,7 @@ You will following softwares to run this project.
   
 # To Run the app 
 To load the data, use the command <code>psql -d news -f newsdata.sql</code> to connect a database and run the necessary SQL statements.
-To execute the program, run python3 newsdata.py from the command line.
+To execute the program, run python newsdata.py from the command line.
 
 # The Database
 The database includes following tables.
