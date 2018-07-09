@@ -57,9 +57,9 @@ def popular_article():
     c.execute(query)
     result = c.fetchall()
     db.close()
-    print "\nPopular Articles:\n"
+    print("\nPopular Articles:\n")
     for i in range(0, len(result), 1):
-        print "\"" + result[i][0] + "\" - " + str(result[i][1]) + " views"
+        print("\"" + result[i][0] + "\" - " + str(result[i][1]) + " views")
 
 
 def popular_authors():
@@ -69,9 +69,9 @@ def popular_authors():
     c.execute(query)
     result = c.fetchall()
     db.close()
-    print "\nPopular Authors:\n"
+    print("\nPopular Authors:\n")
     for i in range(0, len(result), 1):
-        print "\"" + result[i][0] + "\" - " + str(result[i][1]) + " views"
+        print("\"" + result[i][0] + "\" - " + str(result[i][1]) + " views")
 
 
 def log_status():
@@ -81,9 +81,9 @@ def log_status():
     c.execute(query)
     result = c.fetchall()
     db.close()
-    print "\nDays with more than 1% of errors:\n"
+    print("\nDays with more than 1% of errors:\n")
     for i in range(0, len(result), 1):
-        print str(result[i][0])+ " - "+str(round(result[i][3], 2))+"% errors"
+        print(str(result[i][0])+ " - "+str(round(result[i][3], 2))+"% errors")
 
 if __name__ == '__main__':
     # uncomment the below code to make views
@@ -93,4 +93,4 @@ if __name__ == '__main__':
     popular_article()
     popular_authors()
     log_status()
-    print "\nSuccess!\n"
+    print("\nSuccess!\n")
