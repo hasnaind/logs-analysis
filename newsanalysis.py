@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import psycopg2
 
 
@@ -9,6 +11,7 @@ def connect(dbname="news"):
         return db, c
     except:
         print("Error in connecting to database")
+
 
 def view_popular_article():
     try:
@@ -22,10 +25,12 @@ def view_popular_article():
         db.close()
     except:
         print("Error in creating view popular_articles")
+
+
 def view_popular_authors():
     try:
         db, c = connect()
-        query= "create or replace view popular_authors as select authors.name,\
+        query = "create or replace view popular_authors as select authors.name,\
         count(articles.author) as views from articles, log, authors where\
         log.path = concat('/article/',articles.slug) and\
         articles.author = authors.id group by authors.name order by views desc"
@@ -34,6 +39,8 @@ def view_popular_authors():
         db.close()
     except:
         print("Error in creating view popular_authors")
+
+
 def view_log_status():
     try:
         db, c = connect()
@@ -86,7 +93,6 @@ def log_status():
         print(str(result[i][0])+ " - "+str(round(result[i][3], 2))+"% errors")
 
 if __name__ == '__main__':
-    # uncomment the below code to make views
     view_popular_article()
     view_popular_authors()
     view_log_status()
