@@ -28,6 +28,7 @@ The database includes following tables.
 
 * Popular_Articles
 > create or replace view popular_articles as
+
 select title, count(title) as views from articles,log
 where log.path = concat('/article/',articles.slug)
 group by title order by views desc
