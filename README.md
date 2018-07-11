@@ -32,7 +32,7 @@ select title, count(title) as views from articles,log
 where log.path = concat('/article/',articles.slug)
 group by title order by views desc
 * Popular_Authors
-create or replace view popular_authors as
+> create or replace view popular_authors as
 select authors.name, count(articles.author) as views from articles, log, authors
 where log.path = concat('/article/',articles.slug) and articles.author = authors.id
 group by authors.name order by views desc
