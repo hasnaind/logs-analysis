@@ -23,7 +23,9 @@ The database includes following tables.
 * Authors table.
 * Article table.
 * Log table.
-#Viws Made
+
+#Viwes Made
+
 *Popular_Articles
 >create or replace view popular_articles as
 select title, count(title) as views from articles,log
