@@ -27,9 +27,8 @@ The database includes following tables.
 # Viwes Made
 
 * Popular_Articles
-> create or replace view popular_articles as
-
-> select title, count(title) as views from articles,log
+> create or replace view popular_articles as <br>
+select title, count(title) as views from articles,log
 where log.path = concat('/article/',articles.slug)
 group by title order by views desc
 * Popular_Authors
