@@ -23,3 +23,21 @@ The database includes following tables.
 * Authors table.
 * Article table.
 * Log table.
+#Viws Made
+*Popular_Articles
+>create or replace view popular_articles as
+select title, count(title) as views from articles,log
+where log.path = concat('/article/',articles.slug)
+group by title order by views desc
+*Popular_Authors
+>create or replace view popular_authors as
+select authors.name, count(articles.author) as views from articles, log, authors
+where log.path = concat('/article/',articles.slug) and articles.author = authors.id
+group by authors.name order by views desc
+*Log_status
+>create or replace view log_status as
+select Date,Total,Error, (Error::float*100)/Total::float as Percent from
+(select time::timestamp::date as Date, count(status) as Total,
+sum(case when status = '404 NOT FOUND' then 1 else 0 end) as Error from log
+group by time::timestamp::date) as result
+where (Error::float*100)/Total::float > 1.0 order by Percent desc;
